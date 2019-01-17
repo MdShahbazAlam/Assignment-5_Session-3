@@ -1,0 +1,38 @@
+Assignment-5_Session-3
+
+Problem Statement:
+
+1. Import the Titanic Dataset from the link Titanic Data Set.
+
+Perform the following:
+
+a. Is there any difference in fares by different class of tickets?
+Note- Show a boxplot displaying the distribution of fares by class.
+Answer-
+titanic_data <- (read.csv(file.choose(), T, ",")
+View(titanic_data)              
+boxplot(titanic_data$fare~titanic_data$pclass, outline = F, data = Titanic, 
+        col = c("grey", "yellow", "blue"),
+        xlab = "Class of Ticket", ylab = "Fares", 
+        main = "Fares For Different Passenger Class")
+
+# Yes there is difference in Fares for different class of tickets.
+
+
+b. Is there any association with the Passenger class and gender?
+Note- Show a stacked bar chart.
+Answer-
+titanic_data <- read.csv(file="Titanic.csv", header= TRUE, sep=",")
+View(titanic_data)
+counts <- table(titanic_data$PClass, titanic_data$Sex)
+bp <- barplot(counts, col= rainbow(length(counts)),
+              las=1,
+              cex.names = 1.5,
+              main = "Passenger class and gender",
+              xlab = "Gender", ylab = "Class of Ticket")
+legend("topleft",
+       c("1st Class", "2nd class", "3rd Class"),
+       fill = c("Red", "Yellow", "lightgreen"))
+print(bp)
+
+# The number of male passenger in each class in more than the number of female passenger.
